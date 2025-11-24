@@ -52,6 +52,11 @@
     font-weight: bold;
 }
 
+.buttons i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
 .resume-btn {
     background: var(--accent);
     color: white;

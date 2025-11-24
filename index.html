@@ -1,1 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Wahinya | Portfolio</title>
+
+<style>
+/* ------------------------------
+  GLOBAL STYLES
+------------------------------- */
+:root {
+    --bg: #f7f7f7;
+    --text: #111;
+    --accent: #0A84FF;
+    --glass-bg: rgba(255,255,255,0.25);
+    --glass-blur: blur(10px);
+    --shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.dark-mode {
+    --bg: #0f0f0f;
+    --text: #f1f1f1;
+    --glass-bg: rgba(20,20,20,0.25);
+    --shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+}
+
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards;
+}
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------
+  SCROLL PROGRESS BAR
+------------------------------- */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 1000;
+}
+
+/* ------------------------------
+  NAVBAR (GLASSMORPHISM)
+------------------------------- */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow);
+    z-index: 999;
+}
+
+nav .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+nav .links a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: 0.3s;
+}
+nav .links a:hover {
+    color: var(--accent);
+}
+
+/* Dark mode toggle */
+.toggle-btn {
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    transition: 0.3s;
+}
+.toggle-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ------------------------------
+  HERO SECTION
+------------------------------- */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 10%;
+    min-height: 85vh;
+    gap: 50px;
+}
+
+/* Left container */
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+.typewrite {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Bio */
+.bio {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    max-width: 500px;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 25px;
+}
+.buttons a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    margin-right: 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid var(--accent);
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+/* Resume button */
+.resume-btn {
+    background: var(--accent);
+    color: white;
+}
+.resume-btn:hover {
+    transform: scale(1.07);
+}
+
+/* GitHub & LinkedIn buttons */
+.outline-btn {
+    color: var(--accent);
+    background: transparent;
+}
+.outline-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.07);
+}
+
+/* ------------------------------
+  RIGHT COLUMN IMAGE + DATA MATRIX EFFECT
+------------------------------- */
+.hero-image {
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.data-matrix {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0,122,255,0.2) 0%, transparent 70%);
+    animation: floatMatrix 6s infinite alternate ease-in-out;
+    border-radius: 50%;
+}
+
+@keyframes floatMatrix {
+    from { transform: scale(1); opacity: 0.7; }
+    to { transform: scale(1.15); opacity: 1; }
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    transition: 0.4s;
+    box-shadow: var(--shadow);
+}
+.hero-image img:hover {
+    transform: scale(1.05);
+}
+
+/* ------------------------------
+  RESPONSIVE
+------------------------------- */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 60px 5%;
+    }
+    .hero-image {
+        margin-bottom: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- NAVIGATION -->
+<nav class="fade-in">
+    <div class="logo">Samuel Wahinya</div>
+    <div class="links">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="toggle-btn" onclick="toggleDarkMode()">Toggle</button>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero fade-in">
+    
+    <!-- LEFT -->
+    <div class="hero-text">
+        <h1>Samuel Wahinya</h1>
+
+        <h2>
+            I'm a <span class="typewrite" id="typewriter"></span>
+        </h2>
+
+        <p class="bio">
+            Transforming complex data into clarity, strategy, and impact.
+        </p>
+
+        <div class="buttons">
+            <a href="downloads/Samuel_Wahinya_CV.pdf" class="resume-btn" download>
+                📄 Download Resume
+            </a>
+            <a href="https://github.com" target="_blank" class="outline-btn">
+                🐙 GitHub
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="outline-btn">
+                🔗 LinkedIn
+            </a>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-image">
+        <div class="data-matrix"></div>
+        <img src="sam.jpg" alt="Samuel Profile Photo">
+    </div>
+
+</section>
+
+
+<script>
+/* --------------------------------
+   SCROLL PROGRESS BAR
+-------------------------------- */
+const progressBar = document.getElementById("scroll-progress");
+window.addEventListener("scroll", () => {
+    let scroll = document.documentElement.scrollTop;
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrolled = (scroll / height) * 100;
+    progressBar.style.width = scrolled + "%";
+});
+
+/* --------------------------------
+   LIGHT / DARK MODE
+-------------------------------- */
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+
+/* --------------------------------
+   TYPEWRITER EFFECT
+-------------------------------- */
+const titles = [
+    "Data Warehouse Engineer",
+    "SQL Data Analyst",
+    "Tableau Dashboard Developer"
+];
+
+let i = 0, j = 0, deleting = false;
+const speed = 80;
+const typeSpan = document.getElementById("typewriter");
+
+function typeEffect() {
+    let current = titles[i];
+
+    if (!deleting) {
+        typeSpan.textContent = current.slice(0, j++);
+        if (j > current.length + 10) deleting = true;
+    } else {
+        typeSpan.textContent = current.slice(0, j--);
+        if (j < 0) {
+            deleting = false;
+            i = (i + 1) % titles.length;
+        }
+    }
+    setTimeout(typeEffect, speed);
+}
+typeEffect();
+</script>
+
+</body>
+</html>
 

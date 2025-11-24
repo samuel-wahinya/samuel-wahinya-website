@@ -17,10 +17,16 @@
     margin-top: 10px;
 }
 
-.typewrite {
-    color: var(--accent);
-    font-weight: bold;
+.typewrite::after {
+    content: "|";          /* The cursor */
+    animation: blink 0.7s step-start infinite;
 }
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 
 .bio {
     margin: 20px 0;

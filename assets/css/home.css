@@ -95,4 +95,33 @@
 .hero-image img:hover {
     transform: scale(1.05);
 }
+.hero-image {
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    transition: 0.4s;
+    box-shadow: var(--shadow);
+}
+.hero-image img:hover {
+    transform: scale(1.05);
+}
+
+#matrix-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 50%;
+    pointer-events: none;
+}
 
